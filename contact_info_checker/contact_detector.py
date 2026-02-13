@@ -139,6 +139,36 @@ def check(text: str) -> bool:
     return contains_contact_info(text)
 
 
+def check_file(file_path: str) -> bool:
+    """
+    Check if a text file contains contact information.
+    
+    Args:
+        file_path: Path to .txt file
+        
+    Returns:
+        True if contact info detected, False otherwise.
+    """
+    with open(file_path, 'r', encoding='utf-8') as f:
+        text = f.read()
+    return contains_contact_info(text)
+
+
+def detect_from_file(file_path: str) -> DetectionResult:
+    """
+    Detect contact info from a text file with details.
+    
+    Args:
+        file_path: Path to .txt file
+        
+    Returns:
+        DetectionResult with boolean and details dict.
+    """
+    with open(file_path, 'r', encoding='utf-8') as f:
+        text = f.read()
+    return detect_contact_info(text)
+
+
 if __name__ == '__main__':
     # Test cases
     test_cases = [
